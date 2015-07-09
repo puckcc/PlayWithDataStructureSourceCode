@@ -11,7 +11,7 @@
 #define TRUE 1
 #define FALSE 0
 
-#define MAXSIZE 20 /* 存储空间初始分配量 */
+#define MAXSIZE 20           /* 存储空间初始分配量 */
 
 typedef int Status;          /* Status是函数的类型,其值是函数结果状态代码，如OK等 */
 typedef int ElemType;        /* ElemType类型根据实际情况而定，这里假设为int */
@@ -25,8 +25,8 @@ Status visit(ElemType c)
 
 typedef struct
 {
-	ElemType data[MAXSIZE];        /* 数组，存储数据元素 */
-	int length;                                /* 线性表当前长度 */
+	ElemType data[MAXSIZE];  /* 数组，存储数据元素 */
+	int length;              /* 线性表当前长度 */
 }SqList;
 
 /* 初始化顺序线性表 */
@@ -94,17 +94,17 @@ int LocateElem(SqList L,ElemType e)
 Status ListInsert(SqList *L,int i,ElemType e)
 { 
 	int k;
-	if (L->length==MAXSIZE)  /* 顺序线性表已经满 */
+	if (L->length==MAXSIZE)            /* 顺序线性表已经满 */
 		return ERROR;
-	if (i<1 || i>L->length+1)/* 当i比第一位置小或者比最后一位置后一位置还要大时 */
+	if (i<1 || i>L->length+1)          /* 当i比第一位置小或者比最后一位置后一位置还要大时 */
 		return ERROR;
 
-	if (i<=L->length)        /* 若插入数据位置不在表尾 */
+	if (i<=L->length)                  /* 若插入数据位置不在表尾 */
 	{
 		for(k=L->length-1;k>=i-1;k--)  /* 将要插入位置之后的数据元素向后移动一位 */
 			L->data[k+1]=L->data[k];
 	}
-	L->data[i-1]=e;          /* 将新元素插入 */
+	L->data[i-1]=e;                    /* 将新元素插入 */
 	L->length++;
 
 	return OK;
@@ -115,14 +115,14 @@ Status ListInsert(SqList *L,int i,ElemType e)
 Status ListDelete(SqList *L,int i,ElemType *e) 
 { 
     int k;
-    if (L->length==0)               /* 线性表为空 */
+    if (L->length==0)                 /* 线性表为空 */
 		return ERROR;
-    if (i<1 || i>L->length)         /* 删除位置不正确 */
+    if (i<1 || i>L->length)           /* 删除位置不正确 */
         return ERROR;
     *e=L->data[i-1];
-    if (i<L->length)                /* 如果删除不是最后位置 */
+    if (i<L->length)                  /* 如果删除不是最后位置 */
     {
-        for(k=i;k<L->length;k++)/* 将删除位置后继元素前移 */
+        for(k=i;k<L->length;k++)      /* 将删除位置后继元素前移 */
 			L->data[k-1]=L->data[k];
     }
     L->length--;
