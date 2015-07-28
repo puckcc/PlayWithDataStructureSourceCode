@@ -1,6 +1,6 @@
 #include "stdio.h"
 
-int Fbi(int i)  /* ì³²¨ÄÇÆõµÄµÝ¹éº¯Êý */
+int Fbi(int i)   /* ì³²¨ÄÇÆõµÄµÝ¹éº¯Êý */
 {
 	if( i < 2 )
 		return i == 0 ? 0 : 1;  
